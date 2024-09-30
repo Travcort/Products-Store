@@ -6,4 +6,12 @@ const errors = (...params) => {
     console.error(...params);
 }
 
-export {info, errors}
+const requestsLogger = (request, response, next) => {
+    info('Method: ', request.method)
+    info('Path:', request.path)
+    info('Body', request.body)
+    info('-----')
+    next()
+}
+
+export {info, errors, requestsLogger}

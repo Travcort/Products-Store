@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-dotenv.config();
-import {info,errors} from '../utils/logger.js';
+import { MongoUrl } from '../utils/config.js';
+import { info,errors } from '../utils/logger.js';
 
 
 const productSchema = new mongoose.Schema({
@@ -17,12 +16,16 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-})
+},
+{
+    timestamps: true,
+}
+);
 
 const Product = mongoose.model('Product', productSchema)
 
 const Database = () => {
-    mongoose.connect(process.env.Mongo_URI)
+    mongoose.connect(MongoUrl)
     .then(() => {
         info("Successfully Connected to MongoDB on Atlas!");
     })

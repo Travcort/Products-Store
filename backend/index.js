@@ -1,47 +1,23 @@
+// Environment Variables
+import { PORT } from './utils/config.js';
+
+// Express
 import express from 'express'
 const app = express();
 app.use(express.json());
 
-import dotenv from 'dotenv'
-dotenv.config();
-import {info} from './utils/logger.js'
-
-import Database, {Product} from './models/product-model.js'
+// Logging
+import {info,requestsLogger} from './utils/logger.js'
+app.use(requestsLogger);
 
 
-app.get('/', (req,res) => {
-    res.send('Hello Tarv!');
-})
+// Routing
+import productRoutes from './routes/product.routes.js'
+app.use('/api/products', productRoutes)
 
-app.get('/api/products', (req,res) => {
-    Product.find({})
-    .then((result) => {
-        res.json(result);
-    })
-})
+import Database from './models/product-model.js'
 
-app.post('/api/products', (req,res) => {
-    const product = req.body;
-    info(product);
-
-    if(!product.name || !product.price || !product.image) {
-        return res.status(400).json({ success: false, message: 'You have undefined properties in the body!', data: product.content });
-    }
-
-    const newProduct = new Product({
-        name: product.name,
-        price: product.price,
-        image: product.image
-    })
-
-    newProduct.save()
-    .then(() => {
-        res.status(201).json({ success: true, data: newProduct });
-    })
-    .catch(error => res.status(500).json({ success: false, message: "Errors!"}));
-})
-
-app.listen(process.env.PORT, () => {
+app.listen(PORT, () => {
     Database();
-    info('Server started on https://localhost:5000');
+    info(`Server started on https://localhost:${PORT}`);
 })
