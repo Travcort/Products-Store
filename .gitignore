@@ -1,0 +1,8 @@
+# Environment Variables
+.env
+
+# Modules
+node_modules
+
+# REST Client
+testing.rest
