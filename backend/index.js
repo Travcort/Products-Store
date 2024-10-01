@@ -15,7 +15,7 @@ app.use(requestsLogger);
 import productRoutes from './routes/product.routes.js'
 app.use('/api/products', productRoutes)
 
-import Database from './models/product-model.js'
+import Database from './models/product.model.js'
 
 app.listen(PORT, () => {
     Database();

@@ -7,7 +7,7 @@ const errors = (...params) => {
 }
 
 const requestsLogger = (request, response, next) => {
-    info('Method: ', request.method)
+    info('Method:', request.method)
     info('Path:', request.path)
     info('Body', request.body)
     info('-----')
