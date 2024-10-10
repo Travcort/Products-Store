@@ -1,8 +1,13 @@
-# React + Vite
+<div style="text-align: center font-weight: bold;">Welcome to The Product Store</div>                                  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Web Application where the user has the complete abilities of a System Admin to manage it to their own taste
 
-Currently, two official plugins are available:
+```With Great power comes Greater responsibility```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+With that in mind please add CRUD your way into interesting products. 
+
+Good luck with trying to sell them for actual money😂.
+
+It is proudly developed on the MERN stack 
+
+© 2024 Tirva Softwares. All rights reserved.

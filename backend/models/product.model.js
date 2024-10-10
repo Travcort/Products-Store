@@ -24,16 +24,16 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model('Product', productSchema)
 
-const Database = () => {
-    mongoose.connect(MongoUrl)
-    .then(() => {
-        info("Successfully Connected to MongoDB on Atlas!");
-    })
-    .catch(error => {
+const Database = async () => {
+    try {
+        const conn = await mongoose.connect(MongoUrl)
+        info(`MongoDB connected: ${conn.connection.host}`);
+    }
+    catch (error) {
         errors("Could not connect to the Database!");
         errors(`Error: ${error.message}`);
         process.exit(1); 
-    });
+    }
 }
 
 
